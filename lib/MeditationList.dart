@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:timer/HeartRateReg.dart';
 
 import 'Timer_screen.dart';
 
@@ -51,7 +52,7 @@ class _MeditationList extends State<MeditationList> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => TimerScreen(),
+                          builder: (context) => HeratRateReg(),
                           // Pass the arguments as part of the RouteSettings. The
                           // DetailScreen reads the arguments from these settings.
                           settings: RouteSettings(
@@ -79,9 +80,9 @@ class _MeditationList extends State<MeditationList> {
       
     );
   }
-  
+  //Por el momento pone musica en vez de meditaciones....
   List<MeditationItem> medinfo = [
-      MeditationItem(title: "Gratitude Meditation",desc:"A Guided Gratitude Meditation", resourceLoc:"https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3", tipo: 1, passed: false),
+      MeditationItem(title: "Gratitude Meditation",desc:"A Guided Gratitude Meditation", resourceLoc:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", tipo: 1, passed: false),
       MeditationItem(title: "Gratitude Meditation 2",desc:"A Second Guided Gratitude Meditation", resourceLoc:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", tipo: 1, passed: false),
       MeditationItem(title: "Gratitude Meditation 3",desc:"A Third Guided Gratitude Meditation", resourceLoc:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", tipo: 1, passed: false),
       MeditationItem(title: "Gratitude Meditation 4",desc:"A Third Guided Gratitude Meditation", resourceLoc:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", tipo: 1, passed: false),

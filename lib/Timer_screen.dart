@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:timer/widget/button_widget.dart';
 import 'package:just_audio/just_audio.dart';
+import 'HeartRateReg.dart';
 import 'Meditation_Item.dart';
 
 class TimerScreen extends StatefulWidget {
@@ -31,7 +32,7 @@ class _TimerScreen extends State<TimerScreen> {
     Future.delayed(Duration.zero,(){
       item = ModalRoute.of(context)!.settings.arguments as MeditationItem;
     url = item!.resourceLoc;
-      print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+      
       ap
         .setAudioSource(
           
@@ -43,8 +44,7 @@ class _TimerScreen extends State<TimerScreen> {
       // catch load errors: 404, invalid url ...
       print("An error occured $error");
     });
-    print("URL: ");
-    print(url);
+   
       
       
     });
@@ -62,8 +62,7 @@ class _TimerScreen extends State<TimerScreen> {
   
   
   void musicStart() async{
-    print("\n---------------------------------------------------------------------\n\ninside music");
-    print(url);
+    
     var dur = await ap.setUrl(url!);
     int d = dur!.inSeconds;
     maxSeconds = d;
@@ -103,7 +102,7 @@ class _TimerScreen extends State<TimerScreen> {
     // than having to individually change instances of widgets.
     item = ModalRoute.of(context)!.settings.arguments as MeditationItem;
     url = item!.resourceLoc;
-    print(url);
+    
     //musicStart();
 
 
@@ -176,7 +175,21 @@ class _TimerScreen extends State<TimerScreen> {
                         }
                       },),
                     const SizedBox(width: 12,),
-                    ButtonWidget(text: 'Next', onClicked: (){})
+                    ButtonWidget(text: 'Next', onClicked: (){
+                        item!.passedMeditation = true;
+                        Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HeratRateReg(),
+                          // Pass the arguments as part of the RouteSettings. The
+                          // DetailScreen reads the arguments from these settings.
+                          settings: RouteSettings(
+                            arguments: item,
+                          ),
+                        ),
+                      );
+
+                    })
                   ],
                 ) 
                 ;

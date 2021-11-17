@@ -4,7 +4,7 @@ class MeditationItem{
   var tipo;
   var resourceLoc;
   var passedMeditation;
-  var heartreate_before;
+  var heartrate_before;
   var heartrate_after;
   MeditationItem({String? title, String? desc, String? resourceLoc, int? tipo, bool? passed}){
     this.title = title;

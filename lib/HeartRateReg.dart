@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:timer/Timer_screen.dart';
+import 'Meditation_Item.dart';
 
 class HeratRateReg extends StatefulWidget {
   //const HeratRateReg({Key? key, required this.title}) : super(key: key);
@@ -9,9 +11,19 @@ class HeratRateReg extends StatefulWidget {
 
 class _HeratRateReg extends State<HeratRateReg>{
   
+  final myController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    myController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+    MeditationItem meditem  = ModalRoute.of(context)!.settings.arguments as MeditationItem;
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
@@ -38,6 +50,7 @@ class _HeratRateReg extends State<HeratRateReg>{
                             Expanded(child: Column(
                               children: [
                                 TextFormField(
+                                  controller: myController,
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
@@ -109,7 +122,37 @@ class _HeratRateReg extends State<HeratRateReg>{
                     
                       child: TextButton(
                           onPressed: (){
+                            //TimerScreen
                             
+                            if(!meditem.passedMeditation){
+                                meditem.heartrate_before = myController.text;
+                                Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => TimerScreen(),
+                                  // Pass the arguments as part of the RouteSettings. The
+                                  // DetailScreen reads the arguments from these settings.
+                                  settings: RouteSettings(
+                                    arguments: meditem,
+                                  ),
+                                ),
+                              );
+                            }else{
+                              meditem.heartrate_after = myController.text;
+                              //Aquí debe de mandar a una ventana de completado
+                              /*
+                                Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => TimerScreen(),
+                                  // Pass the arguments as part of the RouteSettings. The
+                                  // DetailScreen reads the arguments from these settings.
+                                  settings: RouteSettings(
+                                    arguments: meditem,
+                                  ),
+                                ),
+                              );*/
+                            }
                           },
                           child: Text("Save",),
                           style: TextButton.styleFrom(
