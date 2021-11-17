@@ -4,15 +4,19 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:timer/widget/button_widget.dart';
 import 'package:just_audio/just_audio.dart';
+import 'Meditation_Item.dart';
 
 class TimerScreen extends StatefulWidget {
   //const TimerScreen({Key? key, required this.title}) : super(key: key);
-
+  
   @override
   _TimerScreen createState() => _TimerScreen();
 }
 
 class _TimerScreen extends State<TimerScreen> {
+  String? url;
+  MeditationItem? item;
+  
   
   AudioPlayer ap = AudioPlayer();
   static int maxSeconds = 100;
@@ -24,15 +28,27 @@ class _TimerScreen extends State<TimerScreen> {
     ap = AudioPlayer();
     
     // Set a sequence of audio sources that will be played by the audio player.
-    ap
+    Future.delayed(Duration.zero,(){
+      item = ModalRoute.of(context)!.settings.arguments as MeditationItem;
+    url = item!.resourceLoc;
+      print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+      ap
         .setAudioSource(
           
-          AudioSource.uri(Uri.parse('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3')),
+          AudioSource.uri(Uri.parse(url!)),
     )
+
+
         .catchError((error) {
       // catch load errors: 404, invalid url ...
       print("An error occured $error");
     });
+    print("URL: ");
+    print(url);
+      
+      
+    });
+    
     
     
   }
@@ -46,7 +62,9 @@ class _TimerScreen extends State<TimerScreen> {
   
   
   void musicStart() async{
-    var dur = await ap.setUrl('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+    print("\n---------------------------------------------------------------------\n\ninside music");
+    print(url);
+    var dur = await ap.setUrl(url!);
     int d = dur!.inSeconds;
     maxSeconds = d;
     seconds = d;
@@ -73,15 +91,22 @@ class _TimerScreen extends State<TimerScreen> {
     setState( () =>timer?.cancel());
     //timer?.cancel();
   }
+  
 
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
-    //
+    
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+    item = ModalRoute.of(context)!.settings.arguments as MeditationItem;
+    url = item!.resourceLoc;
+    print(url);
+    //musicStart();
+
+
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
