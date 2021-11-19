@@ -110,7 +110,8 @@ class _TimerScreen extends State<TimerScreen> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        //title: Text(widget.title),
+        
+        title: Text('Meditación'),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -133,7 +134,7 @@ class _TimerScreen extends State<TimerScreen> {
         final finishedTime = seconds <= 0;
         if (seconds == maxSeconds){
           return ButtonWidget(
-              text: 'Start Timer!',
+              text: 'Empezar Meditación',
               onClicked: () {
                 started = true;
                 musicStart();
@@ -144,7 +145,7 @@ class _TimerScreen extends State<TimerScreen> {
         }else
           if (!finishedTime){
                 return  ButtonWidget(
-                text: isRunning ? 'Pause' : 'Resume',
+                text: isRunning ? 'Pausar' : 'Resumir',
                 bgColor: Colors.blueGrey, 
                 onClicked: () {
                   if(timer!.isActive) { 
@@ -164,7 +165,7 @@ class _TimerScreen extends State<TimerScreen> {
             return Row(mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ButtonWidget(
-                      text: 'Finished',
+                      text: 'Fin',
                       bgColor: Colors.blueGrey, 
                       onClicked: () {
                         if(timer!.isActive) { 
@@ -175,7 +176,7 @@ class _TimerScreen extends State<TimerScreen> {
                         }
                       },),
                     const SizedBox(width: 12,),
-                    ButtonWidget(text: 'Next', onClicked: (){
+                    ButtonWidget(text: 'Siguiente', onClicked: (){
                         item!.passedMeditation = true;
                         Navigator.push(
                         context,
@@ -223,7 +224,7 @@ class _TimerScreen extends State<TimerScreen> {
         fontSize: 80,
       ),
     ) : Text(
-      'Ready',
+      'List@',
       style: TextStyle(
         fontWeight: FontWeight.bold,
         color: Colors.blueGrey,

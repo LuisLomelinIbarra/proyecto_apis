@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:timer/Timer_screen.dart';
+import 'MeditationComplete.dart';
 import 'Meditation_Item.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HeratRateReg extends StatefulWidget {
   //const HeratRateReg({Key? key, required this.title}) : super(key: key);
@@ -26,9 +28,8 @@ class _HeratRateReg extends State<HeratRateReg>{
     MeditationItem meditem  = ModalRoute.of(context)!.settings.arguments as MeditationItem;
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text("Meditation"),
+
+        title: Text("Registro Ritmo Cardiaco"),
       ),
       body: Center(
         
@@ -77,7 +78,7 @@ class _HeratRateReg extends State<HeratRateReg>{
 
                                 SizedBox(height:10),
                                 Text(
-                                  "Write your heart reate",
+                                  "REGISTRA TU RITMO CARDICAO ACTUAL",
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
@@ -126,35 +127,59 @@ class _HeratRateReg extends State<HeratRateReg>{
                             
                             if(!meditem.passedMeditation){
                                 meditem.heartrate_before = myController.text;
-                                Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => TimerScreen(),
-                                  // Pass the arguments as part of the RouteSettings. The
-                                  // DetailScreen reads the arguments from these settings.
-                                  settings: RouteSettings(
-                                    arguments: meditem,
-                                  ),
-                                ),
-                              );
+                                if(meditem.heartrate_before != ''){
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => TimerScreen(),
+                                      // Pass the arguments as part of the RouteSettings. The
+                                      // DetailScreen reads the arguments from these settings.
+                                      settings: RouteSettings(
+                                        arguments: meditem,
+                                      ),
+                                    ),
+                                  );
+                                }else{
+                                  Fluttertoast.showToast(
+                                      msg: "Ingresa un valor",
+                                      toastLength: Toast.LENGTH_SHORT,
+                                      gravity: ToastGravity.CENTER,
+                                      timeInSecForIosWeb: 1,
+                                      backgroundColor: Colors.red,
+                                      textColor: Colors.white,
+                                      fontSize: 16.0
+                                  );
+                                }
                             }else{
                               meditem.heartrate_after = myController.text;
                               //Aquí debe de mandar a una ventana de completado
-                              /*
+                              if(meditem.heartrate_after != ''){
                                 Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => TimerScreen(),
-                                  // Pass the arguments as part of the RouteSettings. The
-                                  // DetailScreen reads the arguments from these settings.
-                                  settings: RouteSettings(
-                                    arguments: meditem,
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => MeditationComplete(),
+                                    // Pass the arguments as part of the RouteSettings. The
+                                    // DetailScreen reads the arguments from these settings.
+                                    settings: RouteSettings(
+                                      arguments: meditem,
+                                    ),
                                   ),
-                                ),
-                              );*/
+                                );
+                              }else{
+                                Fluttertoast.showToast(
+                                      msg: "Ingresa un valor",
+                                      toastLength: Toast.LENGTH_SHORT,
+                                      gravity: ToastGravity.CENTER,
+                                      timeInSecForIosWeb: 1,
+                                      backgroundColor: Colors.red,
+                                      textColor: Colors.white,
+                                      fontSize: 16.0
+                                  );
+                              }
+                                
                             }
                           },
-                          child: Text("Save",),
+                          child: Text("Guardar",),
                           style: TextButton.styleFrom(
                           primary: Colors.white,
                           
