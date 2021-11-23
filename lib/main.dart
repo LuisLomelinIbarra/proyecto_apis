@@ -10,6 +10,7 @@ import 'MeditationList.dart';
 import 'Timer_screen.dart';
 import 'HeartRateReg.dart';
 import 'MeditationComplete.dart';
+import 'app.dart';
 
 void main() {
   runApp(const MyApp());
