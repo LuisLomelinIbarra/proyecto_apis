@@ -53,15 +53,19 @@ class MenuPage extends StatelessWidget {
                             },
                           )),
                     )),
-                const Positioned(
-                  right: 20,
-                  top: 100,
-                  child: Icon(
-                    Icons.circle_notifications,
-                    size: 30,
-                    color: Colors.white,
-                  ),
-                ),
+                Positioned(
+                    right: 20,
+                    top: 100,
+                    child: GestureDetector(
+                      child: const Icon(
+                        Icons.circle_notifications,
+                        size: 30,
+                        color: Colors.white,
+                      ),
+                      onTap: () {
+                        showAlertNot(context);
+                      },
+                    )),
                 Positioned(
                   left: 20,
                   top: 100,
@@ -306,6 +310,66 @@ showAlertCons(BuildContext context) {
         ],
       ),
     ),
+    actions: [
+      okButton,
+    ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
+
+showAlertNot(BuildContext context) {
+  final noti = <String>[
+    'Hoy el día nacional de la paz',
+    'Recuerda hacer 2 meditaciones diarias',
+    'No olvides checar los proximos eventos'
+  ];
+  // set up the button
+  Widget okButton = TextButton(
+    child: const Text("OK"),
+    onPressed: () {
+      Navigator.of(context).pop();
+    },
+  );
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: const Text('Notificaciones'),
+    content: SizedBox(
+        width: 250,
+        height: 200,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Card(
+                color: Colors.teal[400],
+                child: ListTile(
+                    title: Text(
+                  noti[0],
+                  style: const TextStyle(color: Colors.white),
+                ))),
+            Card(
+                color: Colors.teal[400],
+                child: ListTile(
+                    title: Text(
+                  noti[1],
+                  style: const TextStyle(color: Colors.white),
+                ))),
+            Card(
+                color: Colors.teal[400],
+                child: ListTile(
+                    title: Text(
+                  noti[2],
+                  style: const TextStyle(color: Colors.white),
+                ))),
+          ],
+        )),
     actions: [
       okButton,
     ],
