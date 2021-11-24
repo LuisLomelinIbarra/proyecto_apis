@@ -3,6 +3,9 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:timer/HeartRateReg.dart';
+import 'package:timer/historial_screen.dart';
+import 'package:timer/menu.dart';
+import 'package:timer/ver_eventos.dart';
 import 'package:timer/widget/button_widget.dart';
 import 'package:just_audio/just_audio.dart';
 
@@ -10,7 +13,9 @@ import 'MeditationList.dart';
 import 'Timer_screen.dart';
 import 'HeartRateReg.dart';
 import 'MeditationComplete.dart';
+
 import 'app.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -23,6 +28,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -38,6 +44,6 @@ class MyApp extends StatelessWidget {
       ),
       home: Register()//const MyHomePage(title: 'Flutter Demo Home Page'),
     );
+
   }
 }
-
