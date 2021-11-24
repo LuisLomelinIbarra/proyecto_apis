@@ -3,10 +3,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:timer/MeditationList.dart';
+import 'package:timer/menu.dart';
 import 'app.dart';
 
-class Login extends StatelessWidget{
-
+class Login extends StatelessWidget {
   late String _usuario;
   late String _password;
 
@@ -15,52 +15,39 @@ class Login extends StatelessWidget{
     return Scaffold(
       backgroundColor: Colors.white,
       body: ListView(
-        padding: EdgeInsets.symmetric(
-          horizontal: 30.0,
-          vertical: 100.0
-        ),
-        children: <Widget> [
+        padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 100.0),
+        children: <Widget>[
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                'images/punto_blanco.png', 
-                width: 350, 
-                height: 350
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  ElevatedButton(
-                    child: Text(
-                      "Registro",
-                      style: TextStyle(
-                        fontFamily: 'Anton',
-                        fontSize: 15.0
+              Image.asset('assets/img/punto_blanco.png',
+                  width: 350, height: 350),
+              Row(mainAxisAlignment: MainAxisAlignment.center,
+                  // ignore: prefer_const_literals_to_create_immutables
+                  children: [
+                    ElevatedButton(
+                      child: Text(
+                        "Registro",
+                        style: TextStyle(fontFamily: 'Anton', fontSize: 15.0),
                       ),
+                      onPressed: () {
+                        Navigator.pop(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Register()));
+                      },
                     ),
-                    onPressed: (){
-                      Navigator.pop(context, MaterialPageRoute(builder: (context)=> Register()));
-                    },
-                  ),
-                  SizedBox(
-                    width: 10.0,
-                  ),
-                  ElevatedButton(
-                    child: Text(
-                      "Iniciar Sesión",
-                      style: TextStyle(
-                        fontFamily: 'Anton',
-                        fontSize: 15.0
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    ElevatedButton(
+                      child: Text(
+                        "Iniciar Sesión",
+                        style: TextStyle(fontFamily: 'Anton', fontSize: 15.0),
                       ),
+                      onPressed: () {},
                     ),
-                    onPressed: (){
-            
-                    },
-                  ),
-                ]
-              ),
+                  ]),
               Divider(
                 height: 20.0,
               ),
@@ -69,17 +56,13 @@ class Login extends StatelessWidget{
               ),
               TextField(
                 decoration: InputDecoration(
-                  hintText: 'Ingresa tu nombre de usuario',
-                  labelText: 'USUARIO',
-                  suffixIcon: Icon(
-                    Icons.verified_user
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0)
-                  )
-                ),
-                onSubmitted: (valor){
-                  _usuario=valor;
+                    hintText: 'Ingresa tu nombre de usuario',
+                    labelText: 'USUARIO',
+                    suffixIcon: Icon(Icons.verified_user),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0))),
+                onSubmitted: (valor) {
+                  _usuario = valor;
                   print('El nombre es $_usuario');
                 },
               ),
@@ -90,17 +73,13 @@ class Login extends StatelessWidget{
                 enableInteractiveSelection: false,
                 obscureText: true,
                 decoration: InputDecoration(
-                  hintText: 'Ingresa tu contraseña',
-                  labelText: 'CONTRASEÑA',
-                  suffixIcon: Icon(
-                    Icons.lock_outline
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0)
-                  )
-                ),
-                onSubmitted: (valor){
-                  _password=valor;
+                    hintText: 'Ingresa tu contraseña',
+                    labelText: 'CONTRASEÑA',
+                    suffixIcon: Icon(Icons.lock_outline),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0))),
+                onSubmitted: (valor) {
+                  _password = valor;
                   print('La contraseña es $_password');
                 },
               ),
@@ -111,19 +90,17 @@ class Login extends StatelessWidget{
                 width: double.infinity,
                 child: RaisedButton(
                   hoverColor: Colors.lightBlue,
-                  child: Text(
-                    'Ingresar',
-                    style: TextStyle(
-                      color: Colors.black45,
-                      fontSize: 30.0,
-                      fontFamily: 'Anton'
-                    )
-                  ),
+                  child: Text('Ingresar',
+                      style: TextStyle(
+                          color: Colors.black45,
+                          fontSize: 30.0,
+                          fontFamily: 'Anton')),
                   color: Colors.cyan.shade800,
-                  onPressed: (){
+                  onPressed: () {
                     print('Diste clic');
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> MeditationList()));
-                  }, 
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => MenuPage()));
+                  },
                 ),
               ),
             ],
