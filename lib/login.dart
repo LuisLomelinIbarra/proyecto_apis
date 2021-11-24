@@ -97,7 +97,6 @@ class Login extends StatelessWidget {
                           fontFamily: 'Anton')),
                   color: Colors.cyan.shade800,
                   onPressed: () {
-                    print('Diste clic');
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => MenuPage()));
                   },

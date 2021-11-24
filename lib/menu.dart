@@ -1,3 +1,7 @@
+import 'package:timer/ChartSampleGallery.dart';
+import 'package:timer/MeditationList.dart';
+import 'package:timer/ver_eventos.dart';
+
 import 'historial_screen.dart';
 import 'retos.dart';
 import 'package:flutter/cupertino.dart';
@@ -52,14 +56,24 @@ class MenuPage extends StatelessWidget {
                 const Positioned(
                   right: 20,
                   top: 100,
-                  child: Icon(Icons.circle_notifications, size: 30),
+                  child: Icon(
+                    Icons.circle_notifications,
+                    size: 30,
+                    color: Colors.white,
+                  ),
                 ),
                 Positioned(
                   left: 20,
                   top: 100,
                   child: GestureDetector(
-                    child: const Icon(Icons.construction, size: 30),
-                    onTap: () {},
+                    child: const Icon(
+                      Icons.construction,
+                      size: 30,
+                      color: Colors.white,
+                    ),
+                    onTap: () {
+                      showAlertCons(context);
+                    },
                   ),
                 )
               ],
@@ -79,7 +93,13 @@ class MenuPage extends StatelessWidget {
                 Row(
                   children: [
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MeditationList()),
+                        );
+                      },
                       child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: ClipRRect(
@@ -129,7 +149,13 @@ class MenuPage extends StatelessWidget {
                 Row(
                   children: [
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ChartSampleGallery()),
+                        );
+                      },
                       child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: ClipRRect(
@@ -186,7 +212,14 @@ class MenuPage extends StatelessWidget {
                         ),
                         const Spacer(),
                         TextButton(
-                            onPressed: () {}, child: const Text('ver todos'))
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => VerEventos()),
+                              );
+                            },
+                            child: const Text('ver todos'))
                       ],
                     )),
                 SizedBox(
@@ -248,4 +281,41 @@ class MenuPage extends StatelessWidget {
       ),
     );
   }
+}
+
+showAlertCons(BuildContext context) {
+  // set up the button
+  Widget okButton = TextButton(
+    child: const Text("OK"),
+    onPressed: () {
+      Navigator.of(context).pop();
+    },
+  );
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: const Text('Configuración'),
+    content: SizedBox(
+      height: 100,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          TextButton(onPressed: () {}, child: const Text('Cambiar usuario')),
+          TextButton(
+              onPressed: () {}, child: const Text('Cambiar constraseña')),
+        ],
+      ),
+    ),
+    actions: [
+      okButton,
+    ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }
