@@ -1,4 +1,4 @@
-import 'package:apis/custom_card.dart';
+import 'custom_card.dart';
 import 'package:flutter/material.dart';
 
 class RetosScreen extends StatelessWidget {

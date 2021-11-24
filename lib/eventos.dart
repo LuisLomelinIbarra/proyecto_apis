@@ -1,4 +1,4 @@
-import 'package:apis/event.dart';
+import 'event.dart';
 import 'package:flutter/material.dart';
 
 class Eventos {

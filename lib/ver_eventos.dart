@@ -1,8 +1,8 @@
-import 'package:apis/event.dart';
-import 'package:apis/evento_info.dart';
+import 'event.dart';
+import 'evento_info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:apis/eventos.dart';
+import 'eventos.dart';
 
 class VerEventos extends StatelessWidget {
   VerEventos({Key? key}) : super(key: key);
