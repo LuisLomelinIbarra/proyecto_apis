@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:timer/NoteMaker.dart';
+import 'package:timer/menu.dart';
 
 
 class MeditationComplete extends StatefulWidget {
@@ -194,7 +196,15 @@ class _MeditationComplete extends State<MeditationComplete> {
                   margin: EdgeInsets.fromLTRB(16.0, 14.0, 16.0, 14.0),
                   child:InkWell(
                     onTap: (){
-
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NoteMaker(),
+                          // Pass the arguments as part of the RouteSettings. The
+                          // DetailScreen reads the arguments from these settings.
+                          
+                        ),
+                      );
                     },
                     
                     child: Padding(
@@ -233,7 +243,16 @@ class _MeditationComplete extends State<MeditationComplete> {
 
               ),
               onPressed: (){
-
+                
+                Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MenuPage(),
+                          // Pass the arguments as part of the RouteSettings. The
+                          // DetailScreen reads the arguments from these settings.
+                          
+                        ),
+                      );
               }, 
             child: 
               Text(
