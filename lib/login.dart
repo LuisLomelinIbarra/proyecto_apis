@@ -1,19 +1,12 @@
-// ignore_for_file: prefer_const_constructors, duplicate_ignore, prefer_const_constructors_in_immutables, avoid_print, deprecated_member_use
+// ignore_for_file: deprecated_member_use
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'login.dart';
+import 'package:timer/MeditationList.dart';
+import 'app.dart';
 
-class Register extends StatefulWidget {
-  Register({Key? key}) : super(key: key);
+class Login extends StatelessWidget{
 
-  @override
-  _RegisterState createState() => _RegisterState();
-}
-
-class _RegisterState extends State<Register> {
-
-  late String _email;
   late String _usuario;
   late String _password;
 
@@ -48,7 +41,7 @@ class _RegisterState extends State<Register> {
                       ),
                     ),
                     onPressed: (){
-                      
+                      Navigator.pop(context, MaterialPageRoute(builder: (context)=> Register()));
                     },
                   ),
                   SizedBox(
@@ -63,31 +56,13 @@ class _RegisterState extends State<Register> {
                       ),
                     ),
                     onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> Login()));
+            
                     },
                   ),
                 ]
               ),
               Divider(
                 height: 20.0,
-              ),
-              TextField(
-                enableInteractiveSelection: false,
-                textCapitalization: TextCapitalization.characters,
-                decoration: InputDecoration(
-                  hintText: 'Ingresa tu correo',
-                  labelText: 'EMAILL',
-                  suffixIcon: Icon(
-                    Icons.email
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0) 
-                  )
-                ),
-                onSubmitted: (valor){
-                  _email=valor;
-                  print('El correo es $_email');
-                },
               ),
               Divider(
                 height: 18.0,
@@ -137,7 +112,7 @@ class _RegisterState extends State<Register> {
                 child: RaisedButton(
                   hoverColor: Colors.lightBlue,
                   child: Text(
-                    'Registrarse',
+                    'Ingresar',
                     style: TextStyle(
                       color: Colors.black45,
                       fontSize: 30.0,
@@ -147,6 +122,7 @@ class _RegisterState extends State<Register> {
                   color: Colors.cyan.shade800,
                   onPressed: (){
                     print('Diste clic');
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> MeditationList()));
                   }, 
                 ),
               ),
