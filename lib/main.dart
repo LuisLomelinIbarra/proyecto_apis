@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:timer/HeartRateReg.dart';
 import 'package:timer/historial_screen.dart';
+import 'package:timer/menu.dart';
 import 'package:timer/ver_eventos.dart';
 import 'package:timer/widget/button_widget.dart';
 import 'package:just_audio/just_audio.dart';
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home:
-            MeditationList() //MeditationList()//const MyHomePage(title: 'Flutter Demo Home Page'),
+            MenuPage() //MeditationList()//const MyHomePage(title: 'Flutter Demo Home Page'),
         );
   }
 }
