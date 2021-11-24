@@ -28,23 +28,35 @@ class _NoteMaker extends State<NoteMaker> {
 }
   @override
   Widget build(BuildContext context){
-    return SingleChildScrollView(
-    child: Column(
+    return Scaffold(
+    appBar: AppBar(),
+    body: Column(
         children: <Widget>[
-        TextField(
-            decoration: InputDecoration(border: InputBorder.none),
-            autofocus: true,
-            keyboardType: TextInputType.multiline,
-            maxLines: null,
-            controller: titleController,
+        Expanded(
+          
+          child: Column(
+            children: [Card(
+              color: Colors.white10,
+              child: Expanded(child:TextField(
+              decoration: InputDecoration(border: InputBorder.none),
+              autofocus: true,
+              keyboardType: TextInputType.multiline,
+              maxLines: null,
+              controller: titleController,
+              ),)
             ),
-        TextField(
-            decoration: InputDecoration(border: InputBorder.none),
-            autofocus: true,
-            keyboardType: TextInputType.multiline,
-            maxLines: null,
-            controller: textController,
-            ),
+        Card(
+          
+          child: Expanded(child: TextField(
+              decoration: InputDecoration(border: InputBorder.none),
+              autofocus: true,
+              keyboardType: TextInputType.multiline,
+              maxLines: null,
+              controller: textController,
+              ),)
+        ),],
+          ),
+        ),
         Card(
                   margin: EdgeInsets.fromLTRB(16.0, 14.0, 16.0, 14.0),
                   color: Colors.lightBlueAccent,
@@ -55,10 +67,11 @@ class _NoteMaker extends State<NoteMaker> {
                           onPressed: (){
                             
                             final now = new DateTime.now();
-                            String formatter = DateFormat('yyyy-MM-dd').format(now);
+                            String formatter = DateFormat('dd/MM/yyyy').format(now);
                              // 2016-01-25
-                            var nnote = Note(title: titleController.text,date:formatter, color: Colors.white, content: textController.text);
-                                Navigator.pop(context);
+                            var nnote = Note(title: titleController.text,date:formatter, color: Colors.blue, content: textController.text);
+                            Notas.addNote(nnote);
+                            Navigator.pop(context);
                              
                                 
                             
